@@ -33,10 +33,20 @@ function addnewProduct(id, description, price) {
   products.push(newProducts);
   return newProducts;
 }
+function addNewProductReview(id,rating,review) {
+  const matchedProduct = getproductById(id);
+
+  if(matchedProduct){
+    const newReview = {rating,review};
+  }
+  matchedProduct.reviews.push({ rating, review });
+  return matchedProduct;
+}
 
 module.exports = {
   getAllProducts,
   getproductsByPrice,
   getproductById,
   addnewProduct,
+  addNewProductReview
 };

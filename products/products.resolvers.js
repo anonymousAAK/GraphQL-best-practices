@@ -1,4 +1,5 @@
 const productsModel = require('./products.model');
+const { addnewProduct } = require('./products.models');
 
 module.exports = {
     Query: {
@@ -21,8 +22,11 @@ module.exports = {
     Mutation: {
         addnewProduct: (_, args, _, _) => {
             return productsModel.addnewProduct(args.id, args.description, args.price);
+        },
+
+        addnewProductReview: (_, args, _, _) => {
+            return productsModel.addnewProductReview(args.productId, args.review);
         }
+    },
 
-
-    }
 }
