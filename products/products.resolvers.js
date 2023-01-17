@@ -1,21 +1,28 @@
 const productsModel = require('./products.model');
 
 module.exports = {
-        Query: {
-            products:  () => {
-                return productsModel.getAllProducts();
-            }
+    Query: {
+        products: () => {
+            return productsModel.getAllProducts();
+        },
             // product: async (parent,args,context,info) => {
             //parent - parent object
             //args - parameterized query , filter
             //context - authentication data
             //info - query information 
-        },
-        productsByPrice:  (_,args,_,_) => {
-            return productsModel.getproductsByPrice(args.minPrice,args.maxPrice);
+        productsByPrice: (_, args, _, _) => {
+            return productsModel.getproductsByPrice(args.minPrice, args.maxPrice);
         },
 
-        productById:  (_,args,_,_) => {
+        productById: (_, args, _, _) => {
             return productsModel.getproductById(args.id);
         }
+    },
+    Mutation: {
+        addnewProduct: (_, args, _, _) => {
+            return productsModel.addnewProduct(args.id, args.description, args.price);
+        }
+
+
     }
+}
